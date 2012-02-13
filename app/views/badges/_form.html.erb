@@ -1,0 +1,32 @@
+
+<div class="clearfix">
+   <%= f.label :name, t("activerecord.attributes.badge.name", :default => "Name"), :class => :label %>
+  <div class="input">
+    <%= f.text_field :name, :class => 'text_field' %>
+  </div>
+</div>
+
+<div class="clearfix">
+   <%= f.label :point, t("activerecord.attributes.badge.point", :default => "Point"), :class => :label %>
+  <div class="input">
+    <%= f.number_field :point, :class => 'number_field' %>
+  </div>
+</div>
+
+<div class="clearfix">
+   <%= f.label :description, t("activerecord.attributes.badge.description", :default => "Description"), :class => :label %>
+  <div class="input">
+    <%= f.text_area :description, :class => 'text_area' %>
+  </div>
+</div>
+
+<div class="clearfix">
+   <%= f.label :image_url, t("activerecord.attributes.badge.image_url", :default => "Image url"), :class => :label %>
+  <div class="input">
+    <%= f.text_field :image_url, :class => 'text_field' %>
+  </div>
+</div>
+<div class="form-actions">
+  <button class="btn primary" type="submit">Save</button> or
+	<%= link_to "Cancel", badges_path %>
+</div>

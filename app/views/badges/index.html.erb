@@ -1,0 +1,26 @@
+<h1>Badges</h1>
+<table class="table table-striped">
+ <thead>
+  <tr>
+    <th></th>
+        <th>
+      <%= t("activerecord.attributes.badge.name", :default => t("activerecord.labels.name", :default => "バッジ")) %>
+    </th>
+    <th>説明</th>
+    <th>ポイント</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @badges.each do |badge| -%>
+   <tr>
+    <td><%= image_tag(badge.image_url) %></td>
+        <td><%= link_to badge.name, badge_path(badge) %>
+    </td>
+        <td><%= badge.description %></td>
+    <td><%= link_to badge.point %>pt</td>
+    </tr>
+    <% end -%>
+   </tbody>
+</table>
+
+<%= link_to "New", new_badge_path, :class => 'btn btn-primary' %>

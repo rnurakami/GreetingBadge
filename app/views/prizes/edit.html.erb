@@ -1,0 +1,4 @@
+<%= form_for @prize, :url => prize_path(@prize), :html => { :class => "edit_prize", :id => "edit_prize" } do |f| -%>
+  <input name="_method" type="hidden" value="put" />
+  <%= render :partial => "form", :locals => {:f => f} %>
+<% end -%>

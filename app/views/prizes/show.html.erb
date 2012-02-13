@@ -1,0 +1,18 @@
+
+<label class="label"><%= t("activerecord.attributes.prize.award_person_id", :default => t("activerecord.labels.award_person_id", :default => "Award person")) %>:</label>
+<p><%= @prize.award_person_id %></p>
+
+<label class="label"><%= t("activerecord.attributes.prize.receive_person_id", :default => t("activerecord.labels.receive_person_id", :default => "Receive person")) %>:</label>
+<p><%= @prize.receive_person_id %></p>
+
+<label class="label"><%= t("activerecord.attributes.prize.badge_id", :default => t("activerecord.labels.badge_id", :default => "Badge")) %>:</label>
+<p><%= @prize.badge_id %></p>
+
+<label class="label"><%= t("activerecord.attributes.prize.comment", :default => t("activerecord.labels.comment", :default => "Comment")) %>:</label>
+<p><%= @prize.comment %></p>
+
+<div class="form-actions">
+<%= link_to "Back", prizes_path, :class => 'btn'  %>
+<%= link_to "Edit", edit_prize_path(@prize), :class => 'btn' %>
+<%= link_to "Delete", prize_path(@prize), :method => "delete", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}", :class => 'btn' %>
+</div>

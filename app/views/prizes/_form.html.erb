@@ -1,0 +1,32 @@
+
+<div class="clearfix">
+   <%= f.label :award_person_id, t("activerecord.attributes.prize.award_person_id", :default => "Award person"), :class => :label %>
+  <div class="input">
+    <%= f.number_field :award_person_id, :class => 'number_field' %>
+  </div>
+</div>
+
+<div class="clearfix">
+   <%= f.label :receive_person_id, t("activerecord.attributes.prize.receive_person_id", :default => "Receive person"), :class => :label %>
+  <div class="input">
+    <%= f.number_field :receive_person_id, :class => 'number_field' %>
+  </div>
+</div>
+
+<div class="clearfix">
+   <%= f.label :badge_id, t("activerecord.attributes.prize.badge_id", :default => "Badge"), :class => :label %>
+  <div class="input">
+    <%= f.number_field :badge_id, :class => 'number_field' %>
+  </div>
+</div>
+
+<div class="clearfix">
+   <%= f.label :comment, t("activerecord.attributes.prize.comment", :default => "Comment"), :class => :label %>
+  <div class="input">
+    <%= f.text_area :comment, :class => 'text_area' %>
+  </div>
+</div>
+<div class="form-actions">
+  <button class="btn primary" type="submit">Save</button> or
+	<%= link_to "Cancel", prizes_path %>
+</div>

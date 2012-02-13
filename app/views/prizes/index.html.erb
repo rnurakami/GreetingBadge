@@ -1,0 +1,28 @@
+<h1>TimeLine</h1>
+<table class="table table-striped">
+ <thead>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+    <th>理由</th>
+    <th>Actions</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @prizes.each do |prize| -%>
+   <tr>
+    <td><%= image_tag(prize.receive_person.image_url) %></td>
+    <td><%= prize.receive_person.name %></td>
+    <td><%= link_to prize.award_person.name %>から<%= link_to prize.badge.name %>が贈られました。</td>
+    <td><%= prize.comment %></td>
+    <td>
+      <%= link_to "open", prize_path(prize) %>
+      <%= link_to "×", prize_path(prize), :class=>"close", :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+    </td>
+    </tr>
+    <% end -%>
+   </tbody>
+</table>
+
+<%= link_to "New", new_prize_path, :class => 'btn btn-primary' %>

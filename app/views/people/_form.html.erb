@@ -1,0 +1,32 @@
+
+<div class="clearfix">
+   <%= f.label :name, t("activerecord.attributes.person.name", :default => "Name"), :class => :label %>
+  <div class="input">
+    <%= f.text_field :name, :class => 'text_field' %>
+  </div>
+</div>
+
+<div class="clearfix">
+   <%= f.label :description, t("activerecord.attributes.person.description", :default => "Description"), :class => :label %>
+  <div class="input">
+    <%= f.text_area :description, :class => 'text_area' %>
+  </div>
+</div>
+
+<div class="clearfix">
+   <%= f.label :email, t("activerecord.attributes.person.email", :default => "Email"), :class => :label %>
+  <div class="input">
+    <%= f.text_field :email, :class => 'text_field' %>
+  </div>
+</div>
+
+<div class="clearfix">
+   <%= f.label :image_url, t("activerecord.attributes.person.image_url", :default => "Image url"), :class => :label %>
+  <div class="input">
+    <%= f.text_field :image_url, :class => 'text_field' %>
+  </div>
+</div>
+<div class="form-actions">
+  <button class="btn primary" type="submit">Save</button> or
+	<%= link_to "Cancel", people_path %>
+</div>
