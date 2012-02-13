@@ -2,21 +2,21 @@
 <div class="clearfix">
    <%= f.label :award_person_id, t("activerecord.attributes.prize.award_person_id", :default => "Award person"), :class => :label %>
   <div class="input">
-    <%= f.number_field :award_person_id, :class => 'number_field' %>
-  </div>
+   <%= f.collection_select(:award_person_id, Person.all, :id, :name) %>
+ </div>
 </div>
 
 <div class="clearfix">
    <%= f.label :receive_person_id, t("activerecord.attributes.prize.receive_person_id", :default => "Receive person"), :class => :label %>
   <div class="input">
-    <%= f.number_field :receive_person_id, :class => 'number_field' %>
+    <%= f.collection_select(:receive_person_id, Person.all, :id, :name) %>
   </div>
 </div>
 
 <div class="clearfix">
    <%= f.label :badge_id, t("activerecord.attributes.prize.badge_id", :default => "Badge"), :class => :label %>
   <div class="input">
-    <%= f.number_field :badge_id, :class => 'number_field' %>
+    <%= f.collection_select(:badge_id, Badge.all, :id, :name) %>
   </div>
 </div>
 
