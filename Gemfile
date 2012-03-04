@@ -44,7 +44,3 @@ gem 'omniauth-twitter'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
-group :test do
-  # Pretty printed test output
-  gem 'turn', '0.8.2', :require => false
-end

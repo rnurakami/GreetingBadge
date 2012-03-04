@@ -1,3 +1,4 @@
+#encoding: utf-8
 class Person < ActiveRecord::Base
   has_many :prizes
 
@@ -9,11 +10,14 @@ class Person < ActiveRecord::Base
   def self.create_with_omniauth(auth)
     create! do |person|
       person.provider = auth["provider"]
-      person.id = auth["uid"]
+      person.uid = auth["uid"]
 
-      person.name = auth["info"]["nickname"]
-      person.description = ["info"]["description"]
-      person.image_url = ["info"]["image"]
+      unless auth["info"].blank?
+       person.nickname = auth["info"]["name"]
+       person.name = auth["info"]["name"]
+       person.description = auth["info"]["description"]
+       person.image_url = auth["info"]["image"]
+      end
 
       person.save!
     end
