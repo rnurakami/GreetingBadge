@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     person = Person.where( :provider => auth["provider"], :uid => auth["uid"] ).first || Person.create_with_omniauth( auth ) 
 
     session[:person_id] = person.id
-    redirect_to :root, :notice => "Signed in!"
+    redirect_to prize_url, :notice => "Signed in!"
   end
 
   def destroy
