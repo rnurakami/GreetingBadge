@@ -8,7 +8,7 @@ class Person < ActiveRecord::Base
   PERSON_IMAGES  = ["person_image/Woof.gif", "person_image/RedDog.gif", "person_image/Bluehound.gif", "person_image/Pointy.gif", "person_image/Doggie.gif", "person_image/PurpGuy.gif"]
 
   def self.create_with_omniauth(auth)
-    create! do |person|
+      person = Person.new
       person.provider = auth["provider"]
       person.uid = auth["uid"]
 
@@ -19,8 +19,8 @@ class Person < ActiveRecord::Base
        person.image_url = auth["info"]["image"]
       end
 
-      person.save!
-    end
+      person.save
+      return person
   end
 
 end
