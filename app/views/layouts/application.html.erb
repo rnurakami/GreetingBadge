@@ -41,7 +41,14 @@
             <ul class="nav">
                 <li><%= link_to "メンバー", people_path  %></li>
                 <li><%= link_to "バッヂ", badges_path  %></li>
-                <li><%= link_to "設定", "#"  %></li>
+                <li><%= link_to "設定", "#" %></li>
+            </ul>
+            <ul class="nav pull-right">
+                <% if current_person %>
+                <li><%= current_person.name %>さん <%= link_to "Signout", logout_path %></li>
+                <% else %>
+                <li><%= link_to "Signin(twitter)", "/auth/twitter" %></li>
+                <% end %>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
