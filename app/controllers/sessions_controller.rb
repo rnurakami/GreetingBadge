@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
 #   person = Person.find_by_provider_and_uid(auth["provider"], auth["uid"]) || Person.create_with_omniauth(auth)
     person = Person.where( :provider => auth["provider"], :uid => auth["uid"] ).first || Person.create_with_omniauth( auth ) 
 
-    session[:person_id] = person_id
+    session[:person_id] = person.id
     redirect_to :root, :notice => "Signed in!"
   end
 
