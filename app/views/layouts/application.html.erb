@@ -47,7 +47,7 @@
                 <% if current_person %>
                 <li><%= current_person.name %>さん <%= link_to "Signout", logout_path %></li>
                 <% else %>
-                <li><%= link_to "Signin(twitter)", "auth/twitter" %></li>
+                <li><%= link_to "Login", "/auth/#{if Rails.env.production? then 'twitter' else 'developer' end}" %></li>
                 <% end %>
             </ul>
           </div><!--/.nav-collapse -->
