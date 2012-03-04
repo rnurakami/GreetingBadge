@@ -10,13 +10,13 @@ class Person < ActiveRecord::Base
   def self.create_with_omniauth(auth)
       person = Person.new
       person[:provider] = auth["provider"]
-      person.uid = auth["uid"]
+      person[:uid] = auth["uid"]
 
       unless auth["info"].blank?
-       person.nickname = auth["info"]["name"]
-       person.name = auth["info"]["name"]
-       person.description = auth["info"]["description"]
-       person.image_url = auth["info"]["image"]
+       person[:nickname] = auth["info"]["nickname"]
+       person[:name] = auth["info"]["name"]
+       person[:description] = auth["info"]["description"]
+       person[:image_url] = auth["info"]["image"]
       end
 
       person.save
