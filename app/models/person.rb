@@ -14,6 +14,8 @@ class Person < ActiveRecord::Base
       person.name = auth["info"]["nickname"]
       person.description = ["info"]["description"]
       person.image_url = ["info"]["image"]
+
+      person.save!
     end
   end
 
