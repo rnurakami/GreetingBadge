@@ -45,7 +45,8 @@
             </ul>
             <ul class="nav pull-right">
                 <% if current_person %>
-                <li><%= current_person.nickname %>さん <%= link_to "Signout", logout_path %></li>
+                <li><%= current_person.nickname %>さん</li>
+                <li><%= link_to "Signout", logout_path %></li>
                 <% else %>
                 <li><%= link_to "Login", "/auth/#{if Rails.env.production? then 'twitter' else 'developer' end}" %></li>
                 <% end %>
