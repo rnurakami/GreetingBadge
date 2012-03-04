@@ -9,7 +9,7 @@ class Person < ActiveRecord::Base
 
   def self.create_with_omniauth(auth)
       person = Person.new
-      person.provider = auth["provider"]
+      person[:provider] = auth["provider"]
       person.uid = auth["uid"]
 
       unless auth["info"].blank?

@@ -24,6 +24,9 @@ ActiveRecord::Schema.define(:version => 20120212072202) do
 
   create_table "people", :force => true do |t|
     t.string   "name"
+    t.string   "nickname"
+    t.string   "uid"
+    t.string   "provider"
     t.text     "description"
     t.string   "email"
     t.string   "image_url"
