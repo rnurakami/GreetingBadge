@@ -64,7 +64,7 @@ GreetingBadge::Application.routes.draw do
   # match ':controller(/:action(/:id(.:format)))'
 
   #OmniAuth
-  match "/auth/:provider/callback" => "sessions#callback"
+  match "/auth/:provider/callback" => "sessions#create"
   match "/logout" => "sessions#destroy", :as => :logout
 
 end
