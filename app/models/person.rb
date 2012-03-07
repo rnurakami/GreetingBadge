@@ -1,6 +1,6 @@
 #encoding: utf-8
 class Person < ActiveRecord::Base
-  has_many :prizes
+  has_many :prizes, :dependent => :destroy
 
   validates :name, :image_url, presence: true
   validates :name, uniqueness: true

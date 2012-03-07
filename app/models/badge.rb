@@ -1,5 +1,5 @@
 class Badge < ActiveRecord::Base
-  has_many :prizes
+  has_many :prizes, :dependent => :destroy
 
   validates :name, :point, :description, presence: true
   validates :name, :image_url, uniqueness: true
