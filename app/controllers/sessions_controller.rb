@@ -16,4 +16,7 @@ class SessionsController < ApplicationController
      redirect_to :timeline, :notice => "Sign out!"
   end
 
+  def failure
+     render :text => "<span style='color: red;'>Auth Failure</span>"
+  end
 end

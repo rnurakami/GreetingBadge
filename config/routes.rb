@@ -56,6 +56,7 @@ GreetingBadge::Application.routes.draw do
 
   #OmniAuth
   match "/auth/:provider/callback" => "sessions#callback"
+  match "/auth/failure" => "sessions#failure""
   match "/logout" => "sessions#destroy", :as => :logout
  
   # You can have the root of your site routed with "root"
