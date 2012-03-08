@@ -10,6 +10,7 @@
   </tr>
   </thead>
   <tbody>
+ 
   <% @prizes.each do |prize| -%>
    <tr>
     <td><%= image_tag(prize.receive_person.image_url) %></td>
@@ -18,7 +19,7 @@
     <td><%= prize.comment %></td>
     <td>
       <%= link_to "open", prize_path(prize) %>
-      <% if current_person.id == award_person.id %>
+      <% if current_person.id == prize.award_person.id %>
       <%= link_to "×", prize_path(prize), :class=>"close", :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
       <% end %>
     </td>
