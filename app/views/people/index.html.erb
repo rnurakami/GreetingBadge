@@ -18,11 +18,14 @@
         <td><%= person.description %></td>
     <td>
       <%= link_to "Show", person_path(person) %>
+      <% if current_person.id = person.id %>
       <%= link_to "Edit", edit_person_path(person) %>
+      <% end %>
     </td>
     </tr>
     <% end -%>
    </tbody>
 </table>
-
+<!--
 <%= link_to "New", new_person_path, :class => 'btn btn-primary' %>
+-->
