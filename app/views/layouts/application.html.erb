@@ -46,7 +46,8 @@
             </ul>
             <ul class="nav pull-right">
                 <% if current_person %>
-                <li><%= link_to "#{current_person.nickname}", "#" %></li>
+                <li><a><%= image_tag(current_person.image_url, :size => "22x22") %></a></li>
+                <li><%= link_to "#{current_person.nickname || current_person.name}", person_path(current_person) %></li>
                 <li><%= link_to "Signout", logout_path %></li>
                 <% else %>
                 <li><%= link_to "Login", "/auth/#{if Rails.env.production? then 'twitter' else 'developer' end}" %></li>
@@ -71,13 +72,12 @@
             <div class="span1">&nbsp;</div>
             <div class="span3">
               <div class="well sidebar-nav">
-                <h3>Sidebar</h3>
                  <ul class="nav nav-list">
-                    <li class="nav-header">Sidebar</li>
-                    <li><%= link_to "メンバー", people_path  %></li>
-                    <li><%= link_to "バッジ", badges_path  %></li>
+                    <li class="nav-header">menu</li>
+                    <li><%= link_to people_path do %><i class="icon-list-alt"></i>メンバー<% end %></li>
+                    <li><%= link_to badges_path do %><i class="icon-gift"></i>バッヂ<% end %></li>
                 </ul>
-            </div>
+              </div>
            </div>
           </div>
         </div>
@@ -89,5 +89,15 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <%= javascript_include_tag "application" %>
 
+    <script type="text/javascript">
+      var uvOptions = {};
+      (function() {
+        var uv = document.createElement('script'); 
+        uv.type = 'text/javascript'; 
+        uv.async = true;
+        uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/z5fClqDXIAfNtWeu29TqHA.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+      })();
+    </script>
   </body>
 </html>

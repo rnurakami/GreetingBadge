@@ -13,7 +13,7 @@
  <% @people.each do |person| -%>
    <tr>
     <td><%= image_tag(person.image_url) %></td>
-        <td><%= link_to person.name, person_path(person) %>
+    <td><%= link_to person.name, person_path(person) %>
     </td>
         <td><%= person.description %></td>
     <td>
