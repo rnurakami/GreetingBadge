@@ -1,33 +1,43 @@
 <h1>TimeLine</h1>
+
+<% if current_person %>
+<%= form_for @prize, :url => prizes_path do |f| -%>
+  <%= f.hidden_field :award_person_id, { :value => "#{current_person.id}"} %>
+  もらう人<%= f.text_field :receive_person_id %></br>
+  バッジ<%= f.collection_select( :badge_id, Badge.all, :id, :name ) %></br>
+  理由<%= f.text_field :comment %></br>
+  <%= submit_tag("ok") %>
+<% end -%>
+<% end %>
+
 <table class="table table-striped">
- <thead>
-  <tr>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th>理由</th>
-    <th>Actions</th>
-  </tr>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+      <th>理由</th>
+      <th>Actions</th>
+    </tr>
   </thead>
   <tbody>
- 
+
+
   <% @prizes.each do |prize| -%>
-   <tr>
-    <td><%= image_tag(prize.receive_person.image_url) %></td>
-    <td><%= prize.receive_person.name %></td>
-    <td><%= link_to prize.award_person.name %>から<%= link_to prize.badge.name %>が贈られました。</td>
-    <td><%= prize.comment %></td>
-    <td>
-      <%= link_to "open", prize_path(prize) %>
-      <% if current_person and current_person.id == prize.award_person.id %>
-      <%= link_to "×", prize_path(prize), :class=>"close", :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
-      <% end %>
-    </td>
+    <tr>
+      <td><%= image_tag(prize.receive_person.image_url) %></td>
+      <td><%= prize.receive_person.name %></td>
+      <td><%= prize.comment %></td>
+      <td><%= link_to prize.award_person.name %>から<%= link_to prize.badge.name %>が贈られました。</td>
+      <td>
+        <%= link_to "open", prize_path(prize) %>
+        <% if current_person and current_person.id == prize.award_person.id %>
+        <%= link_to "×", prize_path(prize), :class=>"close", :method => :delete, :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
+        <% end %>
+      </td>
     </tr>
-    <% end -%>
-   </tbody>
+  <% end -%>
+  </tbody>
 </table>
 
 <% if current_person %>
-<%= link_to "Giv Badge!", new_prize_path, :class => 'btn btn-primary' %>
+  <%= link_to "Give Badge!", new_prize_path, :class => 'btn btn-primary' %>
 <% end %>

@@ -46,7 +46,7 @@
             </ul>
             <ul class="nav pull-right">
                 <% if current_person %>
-                <li><a><%= image_tag(current_person.image_url, :size => "22x22") %></a></li>
+                <li><a><%= image_tag(current_person.image_url, :size => "16x16") %></a></li>
                 <li><%= link_to "#{current_person.nickname || current_person.name}", person_path(current_person) %></li>
                 <li><%= link_to "Signout", logout_path %></li>
                 <% else %>

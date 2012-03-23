@@ -3,6 +3,7 @@ class PrizesController < ApplicationController
   # GET /prizes.json
   def index
     @prizes = Prize.all
+    @prize = Prize.new
 
     respond_to do |format|
       format.html # index.html.erb
