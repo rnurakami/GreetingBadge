@@ -45,7 +45,7 @@ class PrizesController < ApplicationController
 
     respond_to do |format|
       if @prize.save
-        format.html { redirect_to @prize, notice: 'Prize was successfully created.' }
+        format.html { redirect_to url_for(:controller=>"prizes", :action=>"index"), notice: 'Prize was successfully created.' }
         format.json { render json: @prize, status: :created, location: @prize }
       else
         format.html { render action: "new" }

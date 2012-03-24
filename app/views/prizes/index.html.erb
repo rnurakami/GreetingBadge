@@ -1,15 +1,15 @@
-<h1>TimeLine</h1>
-
+<h3>Let's Give Badge!</h3>
 <% if current_person %>
-<%= form_for @prize, :url => prizes_path do |f| -%>
+<%= form_for @prize, :url => prizes_path, :html => { :class => "well" } do |f| -%>
   <%= f.hidden_field :award_person_id, { :value => "#{current_person.id}"} %>
-  もらう人<%= f.text_field :receive_person_id %></br>
-  バッジ<%= f.collection_select( :badge_id, Badge.all, :id, :name ) %></br>
-  理由<%= f.text_field :comment %></br>
-  <%= submit_tag("ok") %>
+  <%= f.collection_select( :receive_person_id, Person.all, :id, :name, :prompt=>"To Whom?")  %>
+  <%= f.collection_select( :badge_id, Badge.all, :id, :description, :prompt=>"Which Badge?" ) %></br>
+  <%= f.text_area :comment, :placeholder => "理由...", :size => "300X20", :class=>"span6" %></br>
+  <%= submit_tag "Give Badge!", :class=>"btn btn-success span6"  %>
 <% end -%>
 <% end %>
 
+<h3>TimeLine</h3>
 <table class="table table-striped">
   <thead>
     <tr>
@@ -23,10 +23,15 @@
 
   <% @prizes.each do |prize| -%>
     <tr>
-      <td><%= image_tag(prize.receive_person.image_url) %></td>
+      <td>
+        <div class="icon_with_badge">
+        <%= image_tag(prize.receive_person.image_url, :size => "50x50", :class => "award_icon") %>
+        <%= image_tag(prize.badge.image_url, :size => "20x20", :class => "order" ) %>
+        </div>
+      </td>
       <td><%= prize.receive_person.name %></td>
-      <td><%= prize.comment %></td>
       <td><%= link_to prize.award_person.name %>から<%= link_to prize.badge.name %>が贈られました。</td>
+      <td><%= prize.comment %></td>
       <td>
         <%= link_to "open", prize_path(prize) %>
         <% if current_person and current_person.id == prize.award_person.id %>
