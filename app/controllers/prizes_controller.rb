@@ -2,7 +2,7 @@ class PrizesController < ApplicationController
   # GET /prizes
   # GET /prizes.json
   def index
-    @prizes = Prize.all
+    @prizes = Prize.order('updated_at DESC')
     @prize = Prize.new
 
     respond_to do |format|
