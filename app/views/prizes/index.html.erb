@@ -1,23 +1,36 @@
 <% if current_person %>
 <h3>Let's Give Badge!</h3>
-<%= form_for @prize, :url => prizes_path, :html => { :class => "well" } do |f| -%>
-  <%= f.hidden_field :award_person_id, { :value => "#{current_person.id}"} %>
+<%= form_for @prize, :url => prizes_path, :html => { :class => "well", :style=>"height:140px;"} do |f| -%>
+  <div>
+	  <%= image_tag(current_person.image_url, :size=>"60x60") %>
+  </div>
+  <div >
+	  <%= f.hidden_field :award_person_id, { :value => "#{current_person.id}"} %>
+  </div>
+  <div style="position: relative; top:-60px; left:95px;" >
   <%= f.collection_select( :receive_person_id, Person.all, :id, :name, :prompt=>"To Whom?")  %>
-  <% @badge = Badge.all %>
-  <table>
-  <tr>
+  </div>
+  <div style="position: relative; top:-60px; left:95px;" >
+    <% @badge = Badge.all %>
+    <table>
+       <tr>
 	  <% @badge.each do |bg| -%>
 		  <td width="25"><%= image_tag(bg.image_url, :size=>"15x15") %></td>
 	  <% end -%>
-  </tr>
-  <tr>
+       </tr>
+       <tr>
 	  <% @badge.each do |bg| -%>
 		  <td><%= f.radio_button(:badge_id, "#{bg.id}" ) %></td>
-	  <% end %>
-  </table>
-
-  <%= f.text_area :comment, :placeholder => "理由...", :size => "300X100", :class=>"span6" %></br>
-  <%= submit_tag "Give Badge!", :class=>"btn btn-success span6" %>
+ 	  <% end %>
+       </tr>
+     </table>
+  </div>
+  <div style="position: relative; top:-50px; left:95px" >
+ 	 <%= f.text_area :comment, :placeholder => "理由...", :size => "300X100", :class=>"span5" %></br>
+ </div>
+ <div style="position: relative; top:-88px; left: 575px;">
+	  <%= submit_tag "Give Badge!", :class=>"btn btn-success span2" %>
+ </div>
 <% end -%>
 <% end %>
 
