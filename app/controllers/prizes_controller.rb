@@ -6,7 +6,7 @@ class PrizesController < ApplicationController
     @prize = Prize.new
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html  # index.html.erb
       format.json { render json: @prizes }
     end
   end

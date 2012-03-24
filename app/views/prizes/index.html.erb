@@ -5,9 +5,10 @@
   <%= f.collection_select( :receive_person_id, Person.all, :id, :name, :prompt=>"To Whom?")  %>
   <%= f.collection_select( :badge_id, Badge.all, :id, :description, :prompt=>"Which Badge?" ) %></br>
   <%= f.text_area :comment, :placeholder => "理由...", :size => "300X100", :class=>"span6" %></br>
-  <%= submit_tag "Give Badge!", :class=>"btn btn-success span6"  %>
+  <%= submit_tag "Give Badge!", :class=>"btn btn-success span6" %>
 <% end -%>
 <% end %>
+
 
 <h3>TimeLine</h3>
 <% if notice %>
