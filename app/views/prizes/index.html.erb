@@ -1,9 +1,21 @@
-<h3>Let's Give Badge!</h3>
 <% if current_person %>
+<h3>Let's Give Badge!</h3>
 <%= form_for @prize, :url => prizes_path, :html => { :class => "well" } do |f| -%>
   <%= f.hidden_field :award_person_id, { :value => "#{current_person.id}"} %>
   <%= f.collection_select( :receive_person_id, Person.all, :id, :name, :prompt=>"To Whom?")  %>
-  <%= f.collection_select( :badge_id, Badge.all, :id, :description, :prompt=>"Which Badge?" ) %></br>
+  <% @badge = Badge.all %>
+  <table>
+  <tr>
+	  <% @badge.each do |bg| -%>
+		  <td width="25"><%= image_tag(bg.image_url, :size=>"15x15") %></td>
+	  <% end -%>
+  </tr>
+  <tr>
+	  <% @badge.each do |bg| -%>
+		  <td><%= f.radio_button(:badge_id, "#{bg.id}" ) %></td>
+	  <% end %>
+  </table>
+
   <%= f.text_area :comment, :placeholder => "理由...", :size => "300X100", :class=>"span6" %></br>
   <%= submit_tag "Give Badge!", :class=>"btn btn-success span6" %>
 <% end -%>
